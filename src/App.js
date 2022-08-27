@@ -69,7 +69,7 @@ function App() {
           ))
         }
         <div className="todo-days">
-          <p>Completed?</p>
+  
           {/* {
           days.map(day => {
             console.log(checkDay(day))
@@ -89,10 +89,10 @@ function App() {
             }
           })
         } */}
-        <div className="completed-column">
 
-        <TodoCompleted todoList={todoList} />
-        </div>
+
+          <TodoCompleted todoList={todoList} />
+
 
         </div>
         {/* {
