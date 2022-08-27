@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../index.css';
 import { useDispatch } from 'react-redux';
 import { saveHabit } from '../features/todoSlice';
+import Button from '@mui/material/Button';
 
 const Input = () => {
     const [input, setInput ] = useState('')
@@ -18,9 +19,9 @@ const Input = () => {
     }
 
   return (
-    <div>
+    <div className="input-container">
         <input type="text" value={input} onChange={e=>setInput(e.target.value)}/>
-        <button onClick={addHabit}>Add habit</button>
+        <button className="input-button" onClick={addHabit} variant="contained">Add Habit</button>
     </div>
   )
 }

@@ -14,17 +14,17 @@ const todoSlice = createSlice({
 
     },
 
-    setCheck: (state, action) => {
-        state.todoList.map(item => {
-            if(action.payload === item.id) {
-                if (item.done === true) {
-                    item.done = false
-                } else {
-                    item.done = true
-                }
-            }
-        })
-    },
+    // setCheck: (state, action) => {
+    //     state.todoList.map(item => {
+    //         if(action.payload === item.id) {
+    //             if (item.done === true) {
+    //                 item.done = false
+    //             } else {
+    //                 item.done = true
+    //             }
+    //         }
+    //     })
+    // },
     markHabit: (state, action) => {
         state.todoList.map(item => {
             if(action.payload.id === item.id) {
@@ -42,11 +42,21 @@ const todoSlice = createSlice({
             }
         })
         localStorage.setItem('habit-list', JSON.stringify(state.todoList))
+    },
+    removeHabit: (state, action) => {
+        for (var i=0; i < state.todoList.length; i++) {
+            if (state.todoList[i].id === action.payload){
+                console.log(i)
+                state.todoList.splice(i, 1)
+            }
+        }
+        localStorage.setItem('habit-list', JSON.stringify(state.todoList))
+        }
     }
-  }
-});
 
-export const { saveHabit, setCheck, markHabit } = todoSlice.actions
+  })
+
+export const { saveHabit, markHabit, removeHabit } = todoSlice.actions
 
 export const selectTodoList = state => state.todos.todoList
 
