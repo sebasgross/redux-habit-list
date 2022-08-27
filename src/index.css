@@ -143,7 +143,7 @@ code {
   flex-direction: column;
   flex-wrap: wrap;
 }
-@media (device-width <= 375px) {
+@media only screen and (max-width: 600px) {
       .habit-list-board {
         display: flex;
         flex-direction: column;
