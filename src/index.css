@@ -35,7 +35,9 @@ code {
 
 }
 .app h1 {
-  font-family: 'Panton', sans-serif;
+  /* font-family: 'Panton', sans-serif; */
+  font-family: Futura, "Trebuchet MS";
+  font-weight: black;
 }
 .todo-container {
 
@@ -45,7 +47,7 @@ code {
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* min-width: 400px; */
+  /* min-width: 1000px; */
   /* border: 1px solid black; */
 }
 .todo-item {
@@ -60,54 +62,81 @@ code {
   display: flex;
 
 }
-
+/*  */
 .todo-days {
   height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100px;
+  /* width: 50px;  */
+
+}
+.todo-days-habits {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%; 
 }
 
+/*  */
+.todo-completed-column{
+  /* width: 80px; */
+  width: 100px;
+  display: flex;
+flex-direction: column;
+justify-content: center;
+}
 .habit-box {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  height: 20px;
-  width: 100px;
+  /* height: 20px; */
+  height: 50px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .done {
-  background-color: lightgreen;
+  background-color: green;
 }
 .not-done {
-  background-color: lightcoral;
+  background-color: red;
 }
 
 .button {
   text-decoration: none;
-  border: 0.1px solid black;
+  border: 0.1px solid white;
   border-radius: 50%;
-  height: 12px;
-  width: 12px;
+  height: 25px;
+  width: 25px;
 }
 .locked {
   background-color: gray;
 }
 .todo-item p {
-  font-family: 'Panton', sans-serif;
+  /* font-family: 'Panton', sans-serif; */
+  font-family: Futura, "Trebuchet MS";
+  
+  font-weight: bold;
   text-transform: capitalize;
   font-size: 12px;
 }
 .todo-days p {
-  font-family: 'Panton', sans-serif;
+  /* font-family: 'Panton', sans-serif; */
+  font-family: Futura, "Trebuchet MS";
+  font-weight: bold;
   text-transform: capitalize;
   font-size: 12px;
 }
 .input-button {
   width: 80px;
   height: 25px;
-  font-family: 'Panton', sans-serif;
+  /* font-family: 'Panton', sans-serif; */
+  font-family: Futura, "Trebuchet MS";
+
+  font-weight: bold;
+
   font-size: 10px;
   margin-left: 5px;
 
@@ -115,19 +144,23 @@ code {
 .habit-list-board {
   display: flex;
   margin-top: 30px;
-  /* width: 600px; */
+  width: 60%;
   flex-direction: row;
-  justify-content: center;
-  /* padding-right: 200px; */
-
+  justify-content: space-around;
 }
 .rules-container {
   width: 280px;
   /* border: 1px solid black; */
-  font-family: 'Panton', sans-serif;
-
+  /* font-family: 'Panton', sans-serif; */
+  font-family: Futura, "Trebuchet MS";
   border-radius: 5px;
   padding: 10px;
+}
+.rules-container h2 {
+  margin-bottom: 5px;
+}
+.rules-container h2:first-child {
+  text-decoration: underline;
 }
 .delete {
   margin-top: 5px;
@@ -136,24 +169,31 @@ code {
 
 }
 .completed-column {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 100%;
   display: flex;
   /* width: 50px; */
   flex-direction: column;
   flex-wrap: wrap;
 }
+.button:hover {
+  opacity: 60%;
+}
 @media only screen and (max-width: 600px) {
       .habit-list-board {
         display: flex;
         flex-direction: column;
-        width: 100vw;
+        width: 100%;
+
+      }
+      .rules-container {
+        width: 100%;
       }
       .todo-list {
         height: 100%;
-        /* display: flex; */
-        /* flex-direction: column; */
+        width: 100%;
         flex-wrap: wrap;
+        justify-content: center;
       }
       .app {
         margin: 0;

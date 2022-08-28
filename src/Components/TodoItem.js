@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux' // this is for using the fucntoins
 import { markHabit, removeHabit } from '../features/todoSlice' //the actual function
 import '../index.css'
-const days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+const days = [1,2,3,4,5]
 
 
 const TodoItem = ({name, done, id}) => {
@@ -34,7 +34,7 @@ const TodoItem = ({name, done, id}) => {
         <p>{name}</p>
         <div className="todo-item-column">
         
-        <div className="todo-days">
+        <div className="todo-days-habits">
         {
           days.map(day => {
             if (done.includes(day)){
