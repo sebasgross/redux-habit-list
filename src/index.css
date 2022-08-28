@@ -60,7 +60,6 @@ code {
 
 .todo-item-column {
   display: flex;
-
 }
 /*  */
 .todo-days {
@@ -136,6 +135,8 @@ justify-content: center;
   font-family: Futura, "Trebuchet MS";
 
   font-weight: bold;
+  text-transform: capitalize;
+  
 
   font-size: 10px;
   margin-left: 5px;

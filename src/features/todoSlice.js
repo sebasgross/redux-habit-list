@@ -26,7 +26,7 @@ const todoSlice = createSlice({
     //     })
     // },
     markHabit: (state, action) => {
-        state.todoList.map(item => {
+        state.todoList.forEach(item => {
             if(action.payload.id === item.id) {
                 if (item.done.includes(action.payload.day)){
                     console.log("day is inside done array")

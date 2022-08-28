@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import '../index.css';
 import { useDispatch } from 'react-redux';
 import { saveHabit } from '../features/todoSlice';
-import Button from '@mui/material/Button';
 
 const Input = () => {
     const [input, setInput ] = useState('')

@@ -1,14 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import todoReducer from '../features/todoSlice'
 
-function saveToLocalStorage(state) {
-  try {
-    const serialisedState = JSON.stringify(state);
-    localStorage.setItem("persistantState", serialisedState);
-  } catch (e) {
-    console.warn(e);
-  }
-}
 
 // load string from localStarage and convert into an Object
 // invalid output must be undefined
