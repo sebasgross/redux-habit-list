@@ -104,6 +104,9 @@ justify-content: center;
 }
 
 .button {
+  -webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
   text-decoration: none;
   border: 0.1px solid white;
   border-radius: 50%;
@@ -133,7 +136,9 @@ justify-content: center;
   height: 25px;
   /* font-family: 'Panton', sans-serif; */
   font-family: Futura, "Trebuchet MS";
-
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   font-weight: bold;
   text-transform: capitalize;
   
@@ -166,7 +171,11 @@ justify-content: center;
 .delete {
   margin-top: 5px;
   font-size: 8px;
-  width: 90px;
+  width: 60px;
+  align-self: center;
+  -webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
 
 }
 .completed-column {
@@ -187,6 +196,9 @@ justify-content: center;
         width: 100%;
 
       }
+      .todo-days {
+        width: 50px;
+      }
       .rules-container {
         width: 100%;
       }
@@ -205,6 +217,12 @@ justify-content: center;
       }
       .rules-container {
         margin-bottom: 20px;
+      }
+      .todo-item {
+        width: 80px;
+      }
+      .todo-completed-column {
+        width: 80px;
       }
 
     }

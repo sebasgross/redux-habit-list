@@ -20,7 +20,7 @@ const Input = () => {
   return (
     <div className="input-container">
         <input type="text" value={input} onChange={e=>setInput(e.target.value)}/>
-        <button className="input-button" onClick={addHabit} variant="contained">Add Habit</button>
+        <button className="input-button" onClick={addHabit} variant="contained">ADD HABIT</button>
     </div>
   )
 }

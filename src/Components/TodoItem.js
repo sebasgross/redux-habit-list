@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux' // this is for using the fucntoins
 import { markHabit, removeHabit } from '../features/todoSlice' //the actual function
 import '../index.css'
-const days = [1,2,3,4,5]
+const days = [1,2,3,4,5,6,7]
 
 
 const TodoItem = ({name, done, id}) => {
@@ -10,7 +10,11 @@ const TodoItem = ({name, done, id}) => {
 
     const checkDay = (day) => {
       var today = new Date();
-      var dd = String(today.getDate()).padStart(2, '0');
+      var dd = today.getDay()
+
+      if (dd === 0) {
+        dd = 7
+      }
 
       if (day > dd) {
         return "locked"
@@ -56,7 +60,7 @@ const TodoItem = ({name, done, id}) => {
         </div>
         </div>
 
-        <button className="input-button delete" onClick={() => deleteHabit(id)}>Delete Habit</button>
+        <button className="input-button delete" onClick={() => deleteHabit(id)}>DELETE</button>
 
     </div>
   )

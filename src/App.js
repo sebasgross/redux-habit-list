@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import{ selectTodoList } from './features/todoSlice';
 import TodoCompleted from './Components/TodoCompleted';
 
-const days = [1,2,3,4,5]
+const days = [1,2,3,4,5,6,7]
 
 
 // const hList = [{
