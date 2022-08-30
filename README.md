@@ -1,4 +1,4 @@
-# Check out the Demo here
+Check out the Demo here
 
 https://strong-smakager-946bd7.netlify.app/
 
