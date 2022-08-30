@@ -104,9 +104,6 @@ justify-content: center;
 }
 
 .button {
-  -webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
   text-decoration: none;
   border: 0.1px solid white;
   border-radius: 50%;
@@ -132,13 +129,10 @@ appearance: none;
   font-size: 12px;
 }
 .input-button {
-  width: 80px;
+  width: auto;
   height: 25px;
   /* font-family: 'Panton', sans-serif; */
   font-family: Futura, "Trebuchet MS";
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   font-weight: bold;
   text-transform: capitalize;
   
@@ -170,12 +164,10 @@ appearance: none;
 }
 .delete {
   margin-top: 5px;
+  margin-right: 5px;
   font-size: 8px;
-  width: 60px;
+  width: 80px;
   align-self: center;
-  -webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
 
 }
 .completed-column {
