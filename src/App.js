@@ -88,16 +88,13 @@ function App() {
         <div className="container">
         <h2>Rules</h2>
           <h2>Step 1</h2>
-
           <p>Add as many habits as you'd like. If I were you I would start with one.</p>
+          
           <h2>Step 2</h2>
-
           <p> Everyday, come to this habit list and check off your habit for the day.</p> 
+          
           <h2>Step 3</h2>
-
-           <p> Every 5 days you start from scratch. However, you dont have to do all your habits everyday, you can also mark them OFF for a day. </p>
-           <p>Every day will begin as red until you mark it as "OFF" or "GREEN".</p>
-
+           <p> Every 7 days you start from scratch.</p>
         </div>
          
         </div>
