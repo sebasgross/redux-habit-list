@@ -15,6 +15,21 @@ const TodoCompleted = ({todoList}) => {
         }
       }
 
+      const checkLocked = (day) => {
+        var today = new Date();
+        var dd = today.getDay()
+  
+        if (dd === 0) {
+          dd = 7
+        }
+  
+        if (day > dd) {
+          return "locked"
+        } else {
+          return "unlocked"
+        }
+      }
+
     const checkIfCompleted = (day) => {
         var completed = 0
         for(var i=0; i < todoList.length; i++) {
@@ -34,20 +49,20 @@ const TodoCompleted = ({todoList}) => {
     if (todoList.length > 0){
         return (
             <div className="todo-completed-column">
-            <p>Completed?</p>
+            <p><b>Success</b></p>
 
             <div className='completed-column'>
             {
               days.map(day => {
                 if (checkIfCompleted(day)){
                   return(
-                    <div className={`habit-box ${checkDay(day)}`}>
+                    <div className={`habit-box ${checkDay(day)} ${checkLocked(day)} done`}>
                   <button className="button done" ></button>
                     </div>
                   )
                 } else {
                   return(
-                    <div className={`habit-box ${checkDay(day)}`}>
+                    <div className={`habit-box ${checkDay(day)} ${checkLocked(day)} not-done`}>
                     <button className="button not-done"></button>
                       </div>
                   )

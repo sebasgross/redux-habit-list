@@ -24,18 +24,29 @@ const TodoItem = ({name, done, id}) => {
     }
 
     const mark = (day) => {
-      dispatch(markHabit({
-        id: id,
-        day: day
-      }))
+      if(checkDay(day) === "locked"){
+        return
+      } else {
+        dispatch(markHabit({
+          id: id,
+          day: day
+        }))
+      }
+
   }
     const deleteHabit = (id) => {
       dispatch(removeHabit(id)) //Removed Habit from List
     }
 
+    const sliceIf = (string) => {
+      if (window.innerWidth <= 365) {
+        return string.slice(0,8)
+      } else return string
+    }
+
   return (
     <div className="todo-item">
-        <p>{name}</p>
+        <p>{sliceIf(name)}</p>
         <div className="todo-item-column">
         
         <div className="todo-days-habits">
@@ -44,13 +55,13 @@ const TodoItem = ({name, done, id}) => {
             if (done.includes(day)){
               return(
               // <p>marked</p>
-              <div className={`habit-box ${checkDay(day)}`}>
+              <div className={`habit-box ${checkDay(day)} done`}>
               <button className="button done" onClick={e => mark(day)}></button>
               </div>
               )
             } else {
               return(
-                <div className={`habit-box ${checkDay(day)}`}>
+                <div className={`habit-box ${checkDay(day)} not-done`}>
                 <button className="button not-done" onClick={e => mark(day)}> </button>
                 </div>
               )
@@ -60,7 +71,7 @@ const TodoItem = ({name, done, id}) => {
         </div>
         </div>
 
-        <button className="input-button delete" onClick={() => deleteHabit(id)}>DELETE</button>
+        <button className="button delete" onClick={() => deleteHabit(id)}></button>
 
     </div>
   )

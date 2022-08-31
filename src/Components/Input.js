@@ -19,8 +19,8 @@ const Input = () => {
 
   return (
     <div className="input-container">
-        <input type="text" value={input} onChange={e=>setInput(e.target.value)}/>
-        <button className="input-button" onClick={addHabit} variant="contained">ADD HABIT</button>
+        <input type="text" value={input} placeholder="Add a habit" onChange={e=>setInput(e.target.value)}/>
+        <button className="button input" onClick={addHabit} variant="contained">+</button>
     </div>
   )
 }

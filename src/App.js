@@ -23,20 +23,30 @@ const days = [1,2,3,4,5,6,7]
 // ]
 
 function App() {
-  console.log("State habit list", JSON.parse(localStorage.getItem('habit-list')))
+  // const dispatch = useDispatch()
+
+  var one_day=1000*60*60*24;
 
   let todoList = useSelector(selectTodoList);
-  // if (JSON.parse(localStorage.getItem('habit-list')).length > 0) {
-  //   todoList = JSON.parse(localStorage.getItem('habit-list'))
+  var dateOfFirst = todoList[0].id;
+
+  var today = Date.now();
+  // var dd = String(today)
+
+  console.log(today, dateOfFirst)
+
+  console.log("saes", (today - dateOfFirst)/one_day)
+
+  // if (dateOfFirst === dd){
+  //   console("tmime to deelte habit list")
+  //   // dispatch(removeAllHabits())
+  // } else {
+  //   console.log("we good")
+  //   console.log(dateOfFirst, dd)
+
   // }
+  // console.log(typeof )
 
-  console.log(todoList)
-
-  // const checkDay = (day) => {
-
-
-  // }
-  
   return (
     <div className="app">
       <h1>Habit List</h1>
@@ -69,10 +79,9 @@ function App() {
               id={habit.id}
             />
             )} else { 
-              console.log("mnto")
             return(
               <div className="todo-item">
-                hola
+                
                 </div>
             )}
 
@@ -92,7 +101,8 @@ function App() {
         </div>
       </div>
       <div className="rules-container">
-          <h2>Rules</h2>
+        <div className="container">
+        <h2>Rules</h2>
           <h2>Step 1</h2>
 
           <p>Add as many habits as you'd like. If I were you I would start with one.</p>
@@ -102,7 +112,10 @@ function App() {
           <h2>Step 3</h2>
 
            <p> Every 5 days you start from scratch. However, you dont have to do all your habits everyday, you can also mark them OFF for a day. </p>
-            <p>Every day will begin as red until you mark it as "OFF" or "GREEN".</p>
+           <p>Every day will begin as red until you mark it as "OFF" or "GREEN".</p>
+
+        </div>
+         
         </div>
     </div>
     </div>
