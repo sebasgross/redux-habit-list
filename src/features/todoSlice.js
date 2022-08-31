@@ -53,15 +53,15 @@ const todoSlice = createSlice({
         localStorage.setItem('habit-list', JSON.stringify(state.todoList))
         },
 
-    removeAllHabits: (state, action) => {
-        state.todoList = [];
-        localStorage.setItem('habit-list', JSON.stringify(state.todoList))
-    }
+    // removeAllHabits: (state, action) => {
+    //     state.todoList = [];
+    //     localStorage.setItem('habit-list', JSON.stringify(state.todoList))
+    // }
     }
 
   })
 
-export const { saveHabit, markHabit, removeHabit, removeAllHabits } = todoSlice.actions
+export const { saveHabit, markHabit, removeHabit } = todoSlice.actions
 
 export const selectTodoList = state => state.todos.todoList
 

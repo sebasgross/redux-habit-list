@@ -35,21 +35,15 @@ code {
 }
 
 .todo-list{
+  min-width: 360px;
   display: flex;
   /* font-family: 'Inter'; */
   font-family: Futura, "Trebuchet MS";
   text-transform: uppercase;
-
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 21px;
-/* identical to box height, or 150% */
-
-
-/* light mode/black 80 */
-
-
 }
 .app h1 {
   /* font-family: 'Panton', sans-serif; */
@@ -219,10 +213,11 @@ opacity: 100%;
         width: 80px;
       }
       .todo-list {
-        height: 100%;
+  /* justify-content: flex-start; */
+  height: 100%;
         width: 100%;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-start;
       }
       .app {
         margin: 0;

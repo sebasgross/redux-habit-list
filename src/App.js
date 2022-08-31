@@ -25,26 +25,10 @@ const days = [1,2,3,4,5,6,7]
 function App() {
   // const dispatch = useDispatch()
 
-  var one_day=1000*60*60*24;
+
 
   let todoList = useSelector(selectTodoList);
-  var dateOfFirst = todoList[0].id;
-
-  var today = Date.now();
-  // var dd = String(today)
-
-  console.log(today, dateOfFirst)
-
-  console.log("saes", (today - dateOfFirst)/one_day)
-
-  // if (dateOfFirst === dd){
-  //   console("tmime to deelte habit list")
-  //   // dispatch(removeAllHabits())
-  // } else {
-  //   console.log("we good")
-  //   console.log(dateOfFirst, dd)
-
-  // }
+ 
   // console.log(typeof )
 
   return (
