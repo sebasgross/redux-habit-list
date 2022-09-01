@@ -5,17 +5,6 @@ const days = [1,2,3,4,5,6,7]
 
 const TodoCompleted = ({todoList}) => {
 
-    const checkDay = (day) => {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-  
-        if (day > dd) {
-          return "locked"
-        } else {
-          return "unlocked"
-        }
-      }
-
       const checkLocked = (day) => {
         var today = new Date();
         var dd = today.getDay()
@@ -57,13 +46,13 @@ const TodoCompleted = ({todoList}) => {
               days.map(day => {
                 if (checkIfCompleted(day)){
                   return(
-                    <div className={`habit-box ${checkDay(day)} ${checkLocked(day)} done`}>
+                    <div className={`habit-box ${checkLocked(day)} done`}>
                   <button className="button done" ></button>
                     </div>
                   )
                 } else {
                   return(
-                    <div className={`habit-box ${checkDay(day)} ${checkLocked(day)} not-done`}>
+                    <div className={`habit-box ${checkLocked(day)} not-done`}>
                     <button className="button not-done"></button>
                       </div>
                   )
