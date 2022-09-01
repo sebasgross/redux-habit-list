@@ -44,8 +44,8 @@ const TodoItem = ({name, done, id}) => {
           return string.slice(0,3)
         }
       } else {
-        if (string.length >= 9) {
-          return string.slice(0,9)
+        if (string.length >= 12) {
+          return string.slice(0,12)
         } else return string
       } 
     }
