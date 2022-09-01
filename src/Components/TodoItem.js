@@ -39,9 +39,15 @@ const TodoItem = ({name, done, id}) => {
     }
 
     const sliceIf = (string) => {
-      if (window.innerWidth <= 365) {
-        return string.slice(0,8)
-      } else return string
+      if (window.innerWidth <= 375) {
+        if (string.length >= 5) {
+          return string.slice(0,3)
+        }
+      } else {
+        if (string.length >= 9) {
+          return string.slice(0,9)
+        } else return string
+      } 
     }
 
   return (

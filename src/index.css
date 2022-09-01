@@ -37,7 +37,9 @@ code {
 .todo-list{
   min-width: 360px;
   display: flex;
+  justify-content: flex-start;
   /* font-family: 'Inter'; */
+  /* display: grid; */
   font-family: Futura, "Trebuchet MS";
   text-transform: uppercase;
 font-style: normal;
@@ -52,13 +54,15 @@ line-height: 21px;
   font-weight: black;
 }
 .todo-container {
-
+  /* display: inline-block; */
   /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
   text-align: center;
+  
   /* min-width: 1000px; */
   /* border: 1px solid black; */
 }
@@ -142,6 +146,7 @@ align-items: center;
 }
 .input {
   margin-left: 10px;
+  color: black;
 }
 .button {
   font-weight: bold;
@@ -209,17 +214,6 @@ opacity: 100%;
         width: 100%;
 
       }
-      .todo-days {
-        width: 80px;
-      }
-      .todo-list {
-  /* justify-content: flex-start; */
-        height: 100%;
-        min-width: 370px;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        ;
-      }
       .app {
         margin: 0;
       } 
@@ -227,8 +221,12 @@ opacity: 100%;
         display: flex;
       
       }
+      /* Rows in the habit List */
+      .todo-days {
+        width: 60px;
+      }
       .todo-item {
-        width: 80px;
+        width: 60px;
       }
       .todo-completed-column {
         width: 80px;
@@ -240,5 +238,9 @@ opacity: 100%;
         flex-direction: column;
         align-items: center;
       }
+      .todo-item {
+        width: 60px;
+      }
+
 
     }
