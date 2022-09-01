@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from "framer-motion"
 
 const days = [1,2,3,4,5,6,7]
 
@@ -48,7 +49,7 @@ const TodoCompleted = ({todoList}) => {
   
     if (todoList.length > 0){
         return (
-            <div className="todo-completed-column">
+            <motion.div exit={{ x: -3 }} initial={{ x: -5 }} animate={{ x : 0}} transition={{ ease: "easeOut", duration: 0.1 }} className="todo-completed-column">
             <p><b>Success</b></p>
 
             <div className='completed-column'>
@@ -70,7 +71,7 @@ const TodoCompleted = ({todoList}) => {
               })
             }
         </div>
-        </div>
+        </motion.div>
 
         )
     } 

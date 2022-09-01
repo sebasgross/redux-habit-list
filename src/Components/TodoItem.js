@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux' // this is for using the fucntoins
 import { markHabit, removeHabit } from '../features/todoSlice' //the actual function
 import '../index.css'
+import { motion } from "framer-motion"
+
 const days = [1,2,3,4,5,6,7]
 
 
@@ -40,8 +42,10 @@ const TodoItem = ({name, done, id}) => {
 
     const sliceIf = (string) => {
       if (window.innerWidth <= 375) {
-        if (string.length >= 5) {
-          return string.slice(0,3)
+        if (string.length > 6) {
+          return string.slice(0,6)
+        } else {
+          return string
         }
       } else {
         if (string.length >= 12) {
@@ -51,7 +55,7 @@ const TodoItem = ({name, done, id}) => {
     }
 
   return (
-    <div className="todo-item">
+    <motion.div exit={{ x: -3 }}  initial={{ x: -5 }} animate={{ x : 0}}className="todo-item" transition={{ ease: "easeOut", duration: 0.1 }}>
         <p>{sliceIf(name)}</p>
         <div className="todo-item-column">
         
@@ -79,7 +83,7 @@ const TodoItem = ({name, done, id}) => {
 
         <button className="button delete" onClick={() => deleteHabit(id)}></button>
 
-    </div>
+    </motion.div>
   )
 }
 
