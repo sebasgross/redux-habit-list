@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux' // this is for using the fucntoins
 import { markHabit, removeHabit } from '../features/todoSlice' //the actual function
 import '../index.css'
@@ -8,6 +8,8 @@ const days = [1,2,3,4,5,6,7]
 
 
 const TodoItem = ({name, done, id}) => {
+  const [timer, setTimer ] = useState();
+
     const dispatch = useDispatch() //You have to activate it
 
     const checkDay = (day) => {
@@ -29,6 +31,7 @@ const TodoItem = ({name, done, id}) => {
       if(checkDay(day) === "locked"){
         return
       } else {
+        
         dispatch(markHabit({
           id: id,
           day: day
@@ -36,23 +39,31 @@ const TodoItem = ({name, done, id}) => {
       }
 
   }
-    const deleteHabit = (id) => {
-      dispatch(removeHabit(id)) //Removed Habit from List
-    }
+  const deleteHabit = (id) => {
+    dispatch(removeHabit(id)) //Removed Habit from List
+  }
 
-    const sliceIf = (string) => {
-      if (window.innerWidth <= 375) {
-        if (string.length > 7) {
-          return string.slice(0,7)
-        } else {
-          return string
-        }
+  const sliceIf = (string) => {
+    if (window.innerWidth <= 375) {
+      if (string.length > 7) {
+        return string.slice(0,7)
       } else {
-        if (string.length >= 12) {
-          return string.slice(0,12)
-        } else return string
-      } 
-    }
+        return string
+      }
+    } else {
+      if (string.length >= 12) {
+        return string.slice(0,12)
+      } else return string
+    } 
+  }
+
+  // const startTimer = () => {
+  //   const t = new Date()
+  //   setTimer(t.setSeconds())
+  //   console.log(t.setSeconds())
+  // }
+
+  console.log(timer)
 
   return (
     <motion.div exit={{ x: -3 }}  initial={{ x: -5 }} animate={{ x : 0}}className="todo-item" transition={{ ease: "easeOut", duration: 0.1 }}>
