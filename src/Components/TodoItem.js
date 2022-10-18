@@ -63,11 +63,12 @@ const TodoItem = ({name, done, id}) => {
   //   console.log(t.setSeconds())
   // }
 
-  console.log(timer)
+  // console.log(timer)
 
   return (
     <motion.div exit={{ x: -3 }}  initial={{ x: -5 }} animate={{ x : 0}}className="todo-item" transition={{ ease: "easeOut", duration: 0.1 }}>
         <p>{sliceIf(name)}</p>
+
         <div className="todo-item-column">
         
         <div className="todo-days-habits">

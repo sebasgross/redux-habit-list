@@ -1,18 +1,44 @@
 import { createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
+
+
+
+
+function checkHabitList() {
+    axios.get('http://localhost:4000/user/get/habit-list',{withCredentials:true})
+      .then((response) => {
+        // setUser(response.data)
+         return response.data
+      })
+      .catch((e) => console.log("Private", e))
+  }
 
 const initialState = {
-    todoList: JSON.parse(localStorage.getItem('habit-list')) || [] 
+    // todoList: JSON.parse(localStorage.getItem('habit-list')) || [] 
+    todoList: [
+        {
+            name: '',
+            done: [],
+            id: 0
+        }
+    ]
 }
+
+console.log(initialState)
 
 const todoSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: { //Simple functions
+    setHabitList: (state, action) => {
+        state.todoList = action.payload
+    },
     saveHabit: (state, action) => {
         state.todoList.push(action.payload)
         localStorage.setItem('habit-list', JSON.stringify(state.todoList))
 
     },
+
 
     // setCheck: (state, action) => {
     //     state.todoList.map(item => {
@@ -61,7 +87,7 @@ const todoSlice = createSlice({
 
   })
 
-export const { saveHabit, markHabit, removeHabit } = todoSlice.actions
+export const { setHabitList, saveHabit, markHabit, removeHabit } = todoSlice.actions
 
 export const selectTodoList = state => state.todos.todoList
 

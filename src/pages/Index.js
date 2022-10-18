@@ -1,20 +1,30 @@
-import React from 'react';
-// import './App.css';
+import React, { useState, useEffect } from 'react';
 import Input from '../Components/Input';
 import TodoItem from '../Components/TodoItem';
 import { useSelector } from 'react-redux';
 import{ selectTodoList } from '../features/todoSlice';
 import TodoCompleted from '../Components/TodoCompleted';
+import axios from 'axios';
 
 const days = [1,2,3,4,5,6,7]
 
 
 function Index() {
 
+  useEffect(() => {
+    checkPrivate();
+  });
 
+  function checkPrivate() {
+    axios.get('http://localhost:4000/user/private',{withCredentials:true})
+      .then((response) => {
+        console.log("Index", response.data)
+      })
+      .catch((e) => console.log("Private", e))
+  }
 
   let todoList = useSelector(selectTodoList);
-
+  
 
   return (
     <div className="app">
@@ -41,10 +51,11 @@ function Index() {
         </div>
         {
           todoList.map(habit => {
+            console.log(habit)
             if (habit) {
               return (
               <TodoItem 
-              name={habit.item}
+              name={habit.name}
               done={habit.done}
               id={habit.id}
             />

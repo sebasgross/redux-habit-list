@@ -4,14 +4,14 @@ import { useDispatch } from 'react-redux';
 import { saveHabit } from '../features/todoSlice';
 
 const Input = () => {
-    const [input, setInput ] = useState('')
-    const dispatch = useDispatch()
+    const [name, setName ] = useState('')
+    const dispatch = useDispatch();
 
     const addHabit = () => {
-        console.log("Adding todo");
+        console.log("Adding habit");
 
         dispatch(saveHabit({
-            item: input,
+            name: name,
             done: [],
             id: Date.now()
         }))
@@ -19,7 +19,7 @@ const Input = () => {
 
   return (
     <div className="input-container">
-        <input type="text" value={input} placeholder="Add a habit" onChange={e=>setInput(e.target.value)}/>
+        <input type="text"  value={name} placeholder="Add a habit" onChange={e=>setName(e.target.value)}/>
         <button className="button input" onClick={addHabit} variant="contained">+</button>
     </div>
   )
