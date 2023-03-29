@@ -1,52 +1,54 @@
+/* eslint-disable no-console */
 import React from 'react';
 // import './App.css';
 import Input from '../Components/Input';
-import TodoItem from '../Components/TodoItem';
+import Habit from '../Components/Habit';
 import { useSelector } from 'react-redux';
 import{ selectTodoList } from '../features/todoSlice';
 import TodoCompleted from '../Components/TodoCompleted';
 
 const days = [1,2,3,4,5,6,7]
 
-
 function Index() {
-
-
-
   let todoList = useSelector(selectTodoList);
 
+  console.log(todoList)
 
   return (
     <div className="app">
       
-      <h1>Habit List</h1>
-      <Input />
+      <div className="header">
+        <h1>Habit List</h1>
+        <Input />
 
+      </div>
       <div className="habit-list-board">
-        {/* <div className="rules-container">
-          <h2>Rules</h2>
-          <p>Add as many habits as you'd like. If I were you I would start with one. Everyday, come to this habit list and check off your habit for the day. Every 31 days you start from scratch. However, you dont have to do all your habits everyday, you can also mark them OFF for a day. Every day will begin as red until you mark it "OFF" or "GREEN".</p>
-        </div> */}
       <div className="todo-container">
         <div className="todo-list">
         <div className="todo-days">
           <p>Days</p>
         {
           days.map(day => (
+            <div className='habit-container'>
             <div className="habit-box">
             <p>{day}</p>
+            
+            </div>
+            <button className="button-off disable"></button>
+
             </div>
           ))
         }
+        
         </div>
-        {
-          todoList.map(habit => {
+        {todoList.map(habit => {
             if (habit) {
               return (
-              <TodoItem 
-              name={habit.item}
-              done={habit.done}
-              id={habit.id}
+              <Habit
+                name={habit.item}
+                done={habit.done}
+                off={habit.off}
+                id={habit.id}
             />
             )} else { 
             return(
@@ -54,9 +56,8 @@ function Index() {
                 
                 </div>
             )}
-
             })
-        }
+         }
         <div className="todo-days">
           <TodoCompleted todoList={todoList} />
         </div>
@@ -69,6 +70,7 @@ function Index() {
 
         } */}
         </div>
+      </div>
       </div>
       <div className="rules-container">
         <div className="container">
@@ -84,7 +86,6 @@ function Index() {
         </div>
          
         </div>
-    </div>
     </div>
   );
 }

@@ -20,7 +20,6 @@ export const store = configureStore({
   reducer: {
     todos: todoReducer
   },
-  // applyMiddleware: saveToLocalStorage(),
   preloadedState: loadFromLocalStorage()
   
 });

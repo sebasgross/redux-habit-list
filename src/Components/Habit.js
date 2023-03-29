@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+/* eslint-disable no-console */
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux' // this is for using the fucntoins
-import { markHabit, removeHabit } from '../features/todoSlice' //the actual function
+import { markHabit, removeHabit, markHabitOff } from '../features/todoSlice' //the actual function
 import '../index.css'
 import { motion } from "framer-motion"
 
 const days = [1,2,3,4,5,6,7]
 
 
-const TodoItem = ({name, done, id}) => {
-  const [timer, setTimer ] = useState();
+const TodoItem = ({name, done, id, off}) => {
 
     const dispatch = useDispatch() //You have to activate it
 
@@ -27,7 +27,9 @@ const TodoItem = ({name, done, id}) => {
       }
     }
 
-    const mark = (day) => {
+
+
+  const markHabitHandler = (day) => {
       if(checkDay(day) === "locked"){
         return
       } else {
@@ -39,6 +41,14 @@ const TodoItem = ({name, done, id}) => {
       }
 
   }
+
+  const turnHabitOff = (day) => {      
+      dispatch(markHabitOff({
+        id: id,
+        day: day
+      }))
+  }
+
   const deleteHabit = (id) => {
     dispatch(removeHabit(id)) //Removed Habit from List
   }
@@ -57,33 +67,32 @@ const TodoItem = ({name, done, id}) => {
     } 
   }
 
-  // const startTimer = () => {
-  //   const t = new Date()
-  //   setTimer(t.setSeconds())
-  //   console.log(t.setSeconds())
-  // }
-
-  console.log(timer)
+  const success_rate = 7 - off.length
 
   return (
-    <motion.div exit={{ x: -3 }}  initial={{ x: -5 }} animate={{ x : 0}}className="todo-item" transition={{ ease: "easeOut", duration: 0.1 }}>
+    <motion.div exit={{ x: -3 }}  initial={{ x: -5 }} animate={{ x : 0}} className="todo-item" transition={{ ease: "easeOut", duration: 0.1 }}>
+        {/* <span> 7 / {success_rate}</span> */}
         <p>{sliceIf(name)}</p>
         <div className="todo-item-column">
-        
         <div className="todo-days-habits">
         {
           days.map(day => {
             if (done.includes(day)){
               return(
-              // <p>marked</p>
-              <div className={`habit-box ${checkDay(day)} done`}>
-              <button className="button done" onClick={e => mark(day)}></button>
+              <div className="habit-container">
+                <div className={`habit-box ${checkDay(day)} done ${off.includes(day)}`}>
+                  <button className="button done" onClick={e => markHabitHandler(day)}></button>
+                </div>
+                <button className={`button-off ${off.includes(day)}`} onClick={e => turnHabitOff(day)}></button>
               </div>
               )
             } else {
               return(
-                <div className={`habit-box ${checkDay(day)} not-done`}>
-                <button className="button not-done" onClick={e => mark(day)}> </button>
+                <div className="habit-container">
+                  <div className={`habit-box ${checkDay(day)} not-done ${off.includes(day)}`}>
+                    <button className="button not-done" onClick={e => markHabitHandler(day)}></button>
+                  </div>
+                  <button className={`button-off ${off.includes(day)}`}  onClick={e => turnHabitOff(day)}></button>
                 </div>
               )
             }

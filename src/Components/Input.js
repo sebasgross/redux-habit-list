@@ -13,6 +13,7 @@ const Input = () => {
         dispatch(saveHabit({
             item: input,
             done: [],
+            off: [],
             id: Date.now()
         }))
     }

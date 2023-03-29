@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from "framer-motion"
 
 const days = [1,2,3,4,5,6,7]
 
 const TodoCompleted = ({todoList}) => {
 
-      const checkLocked = (day) => {
+      const checkIfFutureDay = (day) => {
         var today = new Date();
         var dd = today.getDay()
   
@@ -23,7 +23,7 @@ const TodoCompleted = ({todoList}) => {
     const checkIfCompleted = (day) => {
         var completed = 0
         for(var i=0; i < todoList.length; i++) {
-            if (todoList[i].done.includes(day)) {
+            if (todoList[i].done.includes(day) || todoList[i].off.includes(day)) {
                 completed++
             }
         }
@@ -46,15 +46,21 @@ const TodoCompleted = ({todoList}) => {
               days.map(day => {
                 if (checkIfCompleted(day)){
                   return(
-                    <div className={`habit-box ${checkLocked(day)} done`}>
-                  <button className="button done" ></button>
+                    <div className='habit-container'>
+                      <div className={`habit-box ${checkIfFutureDay(day)} done`}>
+                        <button className="button done" ></button>
+                      </div>
+                        <button className="button-off disable"></button>
                     </div>
                   )
                 } else {
                   return(
-                    <div className={`habit-box ${checkLocked(day)} not-done`}>
-                    <button className="button not-done"></button>
+                    <div className='habit-container'>
+                      <div className={`habit-box ${checkIfFutureDay(day)} not-done`}>
+                        <button className="button not-done"></button>
                       </div>
+                        <button className="button-off disable"></button>
+                    </div>
                   )
                 }
               })

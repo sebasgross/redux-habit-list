@@ -7,13 +7,31 @@ const initialState = {
 const todoSlice = createSlice({
   name: 'todos',
   initialState,
-  reducers: { //Simple functions
+  reducers: { 
+    //Simple functions
     saveHabit: (state, action) => {
         state.todoList.push(action.payload)
         localStorage.setItem('habit-list', JSON.stringify(state.todoList))
 
     },
 
+    markHabitOff: (state, action) => {
+        state.todoList.forEach(habit => {
+            if(action.payload.id === habit.id) {
+                if (habit.off.includes(action.payload.day)){
+                    console.log("day is inside off array")
+                    for(var i =0; i < habit.off.length; i++) {
+                        if (habit.off[i] === action.payload.day){
+                            habit.off.splice(i,1)
+                        }
+                    }
+                } else {
+                    habit.off.push(action.payload.day)
+                }
+            }
+        })
+        localStorage.setItem('habit-list', JSON.stringify(state.todoList))
+    },
     // setCheck: (state, action) => {
     //     state.todoList.map(item => {
     //         if(action.payload === item.id) {
@@ -25,6 +43,7 @@ const todoSlice = createSlice({
     //         }
     //     })
     // },
+    // Map through Array[string] check each habit. If their ID matches the param:id`
     markHabit: (state, action) => {
         state.todoList.forEach(item => {
             if(action.payload.id === item.id) {
@@ -61,7 +80,7 @@ const todoSlice = createSlice({
 
   })
 
-export const { saveHabit, markHabit, removeHabit } = todoSlice.actions
+export const { saveHabit, markHabit, removeHabit, markHabitOff } = todoSlice.actions
 
 export const selectTodoList = state => state.todos.todoList
 
