@@ -264,7 +264,7 @@ opacity: 100%;
   display: flex;
   position: relative;
   align-items: center;
-  right: 12em;
+  /* right: 12em; */
   /* width: 30vw; */
   /* flex-direction: ; */
   /* margin: 0px 200px 0px 200px; */

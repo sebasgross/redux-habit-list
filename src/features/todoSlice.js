@@ -76,7 +76,7 @@ const todoSlice = createSlice({
     //     state.todoList = [];
     //     localStorage.setItem('habit-list', JSON.stringify(state.todoList))
     // }
-    }
+    },
 
   })
 
