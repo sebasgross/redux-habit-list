@@ -228,6 +228,10 @@ opacity: 100%;
         width: 100%;
 
       }
+      .header {
+        flex-direction: column;
+      }
+
       .app {
         margin: 0;
       } 
@@ -254,7 +258,8 @@ opacity: 100%;
       }
   
       .todo-list {
-        max-width: 375px;
+        justify-content: space-around;
+        /* m-width: 375px;  */
         flex-wrap: wrap;
       }
 }

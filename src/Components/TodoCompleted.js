@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from "framer-motion"
+import Tooltip from '@mui/material/Tooltip'
 
 const days = [1,2,3,4,5,6,7]
 
@@ -50,7 +51,11 @@ const TodoCompleted = ({todoList}) => {
                       <div className={`habit-box ${checkIfFutureDay(day)} done`}>
                         <button className="button done" ></button>
                       </div>
+    
+
                         <button className="button-off disable"></button>
+               
+
                     </div>
                   )
                 } else {
@@ -59,6 +64,7 @@ const TodoCompleted = ({todoList}) => {
                       <div className={`habit-box ${checkIfFutureDay(day)} not-done`}>
                         <button className="button not-done"></button>
                       </div>
+                      
                         <button className="button-off disable"></button>
                     </div>
                   )

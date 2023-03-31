@@ -1,4 +1,3 @@
-// import  from "./list";
 import todoReducer from './todoSlice'
 import { combineReducers } from "redux";
 

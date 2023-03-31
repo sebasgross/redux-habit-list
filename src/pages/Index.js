@@ -15,8 +15,7 @@ function Index() {
   console.log(todoList)
 
   return (
-    <div className="app">
-      
+    <div className="index-page">
       <div className="header">
         <h1>Habit List</h1>
         <Input />
@@ -61,14 +60,6 @@ function Index() {
         <div className="todo-days">
           <TodoCompleted todoList={todoList} />
         </div>
-        {/* {
-          days.map(day => (
-            <div className="habit-box">
-            
-            </div>
-          ))
-
-        } */}
         </div>
       </div>
       </div>
