@@ -67,7 +67,7 @@ const TodoItem = ({name, done, id, off}) => {
     } 
   }
 
-  const success_rate = 7 - off.length
+  // const success_rate = 7 - off?.length
 
   return (
     <motion.div exit={{ x: -3 }}  initial={{ x: -5 }} animate={{ x : 0}} className="todo-item" transition={{ ease: "easeOut", duration: 0.1 }}>

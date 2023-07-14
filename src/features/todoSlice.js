@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+
+// console.log(user)
 const initialState = {
-    todoList: JSON.parse(localStorage.getItem('habit-list')) || [] 
+    // date: Date,
+    todoList: JSON.parse(localStorage.getItem('habit-list')) || [],
 }
 
 const todoSlice = createSlice({
@@ -10,6 +13,15 @@ const todoSlice = createSlice({
   reducers: { 
     //Simple functions
     saveHabit: (state, action) => {
+        // state.todoList.user = action.payload.user
+        // if (!state.date) {
+        //     state.date = new Date()
+        // }
+
+        // if (state.user === null) {
+        //     state.user = userFirebase
+        // }
+
         state.todoList.push(action.payload)
         localStorage.setItem('habit-list', JSON.stringify(state.todoList))
 

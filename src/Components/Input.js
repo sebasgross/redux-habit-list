@@ -3,9 +3,9 @@ import '../index.css';
 import { useDispatch } from 'react-redux';
 import { saveHabit } from '../features/todoSlice';
 
-const Input = () => {
+const Input = ({user}) => {
     const [input, setInput ] = useState('')
-    const dispatch = useDispatch()
+    const dispatch = useDispatch()    
 
     const addHabit = () => {
         console.log("Adding todo");
