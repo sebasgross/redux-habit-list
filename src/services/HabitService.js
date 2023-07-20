@@ -1,22 +1,24 @@
-import http from './BaseService'
+import http from "./BaseService";
 
-const logIn = (username, password) => http.post('user/login', {
-    username,
-    password,
-})
-    .then((response) => response)
+const updateHabitList = (habitList) =>
+  http
+    .post("habit-list/update", {
+      habitList,
+    })
+    .then((response) => response);
 
-const signUp = (crendentials) => http.post('user/signup', {
-    username: crendentials.username,
-    password: crendentials.password,
-})
-    .then((response) => response)    
+const createHabitList = (habitList) =>
+  http
+    .post("habit-list/create", {
+      habitList,
+    })
+    .then((response) => response);
 
-const checkForUser = () => http.get('user/private')
-    .then((response) => response)  
+const getHabitList = () =>
+  http.get("habit-list/get").then((response) => response.data);
 
 export default {
-    logIn,
-    signUp,
-    checkForUser,
-}
+  updateHabitList,
+  createHabitList,
+  getHabitList,
+};

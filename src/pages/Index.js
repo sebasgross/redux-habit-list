@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from "react";
+import React, { useContext } from "react";
 // import './App.css';
 import Input from "../Components/Input";
 import Habit from "../Components/Habit";
@@ -11,7 +11,6 @@ const days = [1, 2, 3, 4, 5, 6, 7];
 
 function Index() {
   const todoList = useSelector(selectTodoList);
-  console.log("Index:", todoList);
 
   return (
     <div className="index-page">

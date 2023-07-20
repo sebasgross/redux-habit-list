@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AuthService from "../services/AuthService";
 import LogIn from "../Components/auth/LogIn";
+import { UserProvider } from "./context/UserContext";
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -11,9 +12,18 @@ function AuthProvider({ children }) {
     checkIfUserIsLoggedIn();
   }, []);
 
+  function logIn(username, password) {
+    AuthService.logIn(username, password)
+      .then((res) => {
+        setUser(res.data);
+        setIsLogged(true);
+      })
+      .catch(() => setIsLogged(false));
+  }
+
   function checkIfUserIsLoggedIn() {
     AuthService.checkForUser().then((res) => {
-      console.log(res);
+      // console.log(res);
       if (res.data.user) {
         const user = res.data.user;
         setUser(user);
@@ -25,7 +35,11 @@ function AuthProvider({ children }) {
     });
   }
 
-  return user === null ? <LogIn /> : children;
+  return user === null ? (
+    <LogIn logIn={logIn} />
+  ) : (
+    <UserProvider value={user}>{children}</UserProvider>
+  );
 }
 
 export default AuthProvider;

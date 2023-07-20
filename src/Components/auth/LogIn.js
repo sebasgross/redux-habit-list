@@ -4,7 +4,7 @@ import useAuth from '../../app/useAuth';
 import './SignUp.css';
 import AuthService from '../../services/AuthService';
 
-const LogIn = () => {
+const LogIn = ({logIn}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState();
@@ -15,12 +15,7 @@ const LogIn = () => {
     // Perform sign-up logic here
 
     if (username && password !== '') {
-      AuthService.logIn(username, password)
-        .then((res) => {
-          setUser(res.data)
-          setIsLogged(true)
-        })
-        .catch(() => setIsLogged(false))
+      logIn(username, password)
     }
 
   }

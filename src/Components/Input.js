@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import '../index.css';
 import { useDispatch } from 'react-redux';
 import { saveHabit } from '../features/todoSlice';
+import UserContext from '../app/context/UserContext';
 
-const Input = ({user}) => {
+const Input = () => {
     const [input, setInput ] = useState('')
     const dispatch = useDispatch()    
+    const user = useContext(UserContext)
 
     const addHabit = () => {
-        console.log("Adding todo");
-
         dispatch(saveHabit({
+            habitListId: user.habitList ? user.habitList : 0,
             item: input,
             done: [],
             off: [],

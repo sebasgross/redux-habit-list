@@ -1,48 +1,68 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+import HabitService from "../services/HabitService";
 
-
-// console.log(user)
 const initialState = {
-    // date: Date,
-    todoList: JSON.parse(localStorage.getItem('habit-list')) || [],
-}
+  todoList: [],
+};
 
 const todoSlice = createSlice({
-  name: 'todos',
+  name: "todos",
   initialState,
-  reducers: { 
+  reducers: {
     //Simple functions
+    setHabitList: (state, action) => {
+      state.todoList = action.payload;
+      localStorage.setItem("habit-list", JSON.stringify(action.payload));
+    },
+
     saveHabit: (state, action) => {
-        // state.todoList.user = action.payload.user
-        // if (!state.date) {
-        //     state.date = new Date()
-        // }
+      const { item, done, off, id, habitListId } = action.payload;
+      console.log("save habit slice:", action.payload);
 
-        // if (state.user === null) {
-        //     state.user = userFirebase
-        // }
+      if (habitListId !== 0) {
+        console.log("habit update");
+        const newState = [...state.todoList];
+        newState.push({ item, done, off, id });
 
-        state.todoList.push(action.payload)
-        localStorage.setItem('habit-list', JSON.stringify(state.todoList))
+        HabitService.updateHabitList({ _id: habitListId, list: newState })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        HabitService.createHabitList({ item, done, off, id })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => console.log(err));
+      }
 
+      state.todoList.push({ item, done, off, id });
+      localStorage.setItem("habit-list", JSON.stringify(state.todoList));
     },
 
     markHabitOff: (state, action) => {
-        state.todoList.forEach(habit => {
-            if(action.payload.id === habit.id) {
-                if (habit.off.includes(action.payload.day)){
-                    console.log("day is inside off array")
-                    for(var i =0; i < habit.off.length; i++) {
-                        if (habit.off[i] === action.payload.day){
-                            habit.off.splice(i,1)
-                        }
-                    }
-                } else {
-                    habit.off.push(action.payload.day)
-                }
+      const { habitListId } = action.payload;
+      state.todoList.forEach((habit) => {
+        if (action.payload.id === habit.id) {
+          if (habit.off.includes(action.payload.day)) {
+            console.log("day is inside off array");
+            for (var i = 0; i < habit.off.length; i++) {
+              if (habit.off[i] === action.payload.day) {
+                habit.off.splice(i, 1);
+              }
             }
+          } else {
+            habit.off.push(action.payload.day);
+          }
+        }
+      });
+      localStorage.setItem("habit-list", JSON.stringify(state.todoList));
+      HabitService.updateHabitList({ _id: habitListId, list: state.todoList })
+        .then((res) => {
+          console.log(res);
         })
-        localStorage.setItem('habit-list', JSON.stringify(state.todoList))
+        .catch((err) => console.log(err));
     },
     // setCheck: (state, action) => {
     //     state.todoList.map(item => {
@@ -57,43 +77,56 @@ const todoSlice = createSlice({
     // },
     // Map through Array[string] check each habit. If their ID matches the param:id`
     markHabit: (state, action) => {
-        state.todoList.forEach(item => {
-            if(action.payload.id === item.id) {
-                if (item.done.includes(action.payload.day)){
-                    console.log("day is inside done array")
-                    for(var i =0; i < item.done.length; i++) {
-                        if (item.done[i] === action.payload.day){
-                            item.done.splice(i,1)
-
-                        }
-                    }
-                } else {
-                    item.done.push(action.payload.day)
-                }
+      const { habitListId } = action.payload;
+      state.todoList.forEach((item) => {
+        if (action.payload.id === item.id) {
+          if (item.done.includes(action.payload.day)) {
+            console.log("day is inside done array");
+            for (var i = 0; i < item.done.length; i++) {
+              if (item.done[i] === action.payload.day) {
+                item.done.splice(i, 1);
+              }
             }
-        })
-        localStorage.setItem('habit-list', JSON.stringify(state.todoList))
-    },
-    removeHabit: (state, action) => {
-        for (var i=0; i < state.todoList.length; i++) {
-            if (state.todoList[i].id === action.payload){
-                console.log(i)
-                state.todoList.splice(i, 1)
-            }
+          } else {
+            item.done.push(action.payload.day);
+          }
         }
-        localStorage.setItem('habit-list', JSON.stringify(state.todoList))
-        },
+      });
+      localStorage.setItem("habit-list", JSON.stringify(state.todoList));
+      HabitService.updateHabitList({ _id: habitListId, list: state.todoList })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    },
+
+    removeHabit: (state, action) => {
+      console.log("Removing Habit");
+      const { habitListId, id } = action.payload;
+      for (var i = 0; i < state.todoList.length; i++) {
+        if (state.todoList[i].id === action.payload.id) {
+          console.log(i);
+          state.todoList.splice(i, 1);
+        }
+      }
+      localStorage.setItem("habit-list", JSON.stringify(state.todoList));
+      HabitService.updateHabitList({ _id: habitListId, list: state.todoList })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    },
 
     // removeAllHabits: (state, action) => {
     //     state.todoList = [];
     //     localStorage.setItem('habit-list', JSON.stringify(state.todoList))
     // }
-    },
+  },
+});
 
-  })
+export const { setHabitList, saveHabit, markHabit, removeHabit, markHabitOff } =
+  todoSlice.actions;
 
-export const { saveHabit, markHabit, removeHabit, markHabitOff } = todoSlice.actions
+export const selectTodoList = (state) => state.todos.todoList;
 
-export const selectTodoList = state => state.todos.todoList
-
-export default todoSlice.reducer
+export default todoSlice.reducer;
