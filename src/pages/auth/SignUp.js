@@ -1,32 +1,36 @@
 /* eslint-disable no-console */
-import React, { useEffect, useState } from 'react'
-import useAuth from '../../app/useAuth';
+import React, { useState } from 'react'
 import './SignUp.css';
+import { Button } from '@mui/material';
 import AuthService from '../../services/AuthService';
 
-const LogIn = ({logIn}) => {
+const SignUp = ({setSignUp}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState();
-  const [isLogged, setIsLogged] = useState(false)
+  // const [isLogged, setIsLogged] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform sign-up logic here
 
     if (username && password !== '') {
-      logIn(username, password)
+      AuthService.signUp({username, password})
+        .then((res) => {
+          console.log(res)
+          history.pushState({
+            URL: 'http://localhost:3000/'
+          })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
-
   }
-
-
-
-console.log(user)
 
   return (
     <div className="signup-container">
-      <h2>Log In</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="username"
@@ -40,10 +44,14 @@ console.log(user)
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Log In</button>
+        <button type="submit">Sign Up</button>
       </form>
+      <Button 
+          onClick={() => setSignUp(false)}
+        > Log In
+        </Button>
     </div>
   )
 }
 
-export default LogIn
+export default SignUp

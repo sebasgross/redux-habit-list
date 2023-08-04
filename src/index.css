@@ -24,55 +24,41 @@ code {
   justify-items: center;
   width: 100vw;
   padding-top: 50px;
-  /* margin: 10px 100px 0px 100px; */
-  /* padding: 10px 200px; */
 } 
 
 .input-container {
-  /* margin-bottom: 20px; */
-  /* margin-top: 20px; */
-  height: 100%;
   display: flex;
   flex-direction: row;
-  margin-left: 30px;
+  align-items: baseline;
+  margin-bottom: 20px;
 
 }
 
 .todo-list{
   min-width: 360px;
   display: flex;
-  justify-content: flex-start;
-  /* font-family: 'Inter'; */
-  /* display: grid; */
+  justify-content: center;
   font-family: Futura, "Trebuchet MS";
   text-transform: uppercase;
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 21px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
 }
 .app h1 {
-  /* font-family: 'Panton', sans-serif; */
   font-family: Futura, "Trebuchet MS";
   text-transform: uppercase;
   font-weight: black;
 }
 .todo-container {
-  /* display: inline-block; */
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center; 
   text-align: center;
-  
-  /* min-width: 1000px; */
-  /* border: 1px solid black; */
 }
 .todo-item {
-  /* border-right: 1px solid black;
-  border-left: 1px solid black; */
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -83,15 +69,13 @@ line-height: 21px;
 .todo-item-column {
   display: flex;
 }
-/*  */
+
 .todo-days {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100px;
-  /* width: 50px;  */
-
 }
 .todo-days-habits {
   height: 100%;
@@ -100,9 +84,7 @@ line-height: 21px;
   width: 100%; 
 }
 
-/*  */
 .todo-completed-column{
-  /* width: 80px; */
   width: 100px;
   display: flex;
 flex-direction: column;
@@ -110,16 +92,8 @@ justify-content: center;
 align-items: center;
 }
 
-.turn-off-container {
-
-}
-
-/* .turn-off-container:hover {
-  background-color: black;
-  transition-delay:1s;
-} */
-
 .habit-box {
+  font-size: 8px;
   width: 36px;
   height: 36px;
   background: #EEEEEE;
@@ -146,15 +120,11 @@ align-items: center;
   background-color: gray;
 }
 .todo-item p {
-  /* font-family: 'Panton', sans-serif; */
   font-family: Futura, "Trebuchet MS";
-  /* font-family: 'Inter'; */
   font-weight: bold;
   text-transform: uppercase;
 }
 .todo-days p {
-  /* font-family: 'Panton', sans-serif; */
-  /* font-family: 'Inter'; */
   font-family: Futura, "Trebuchet MS";
   font-weight: bold;
 }
@@ -178,9 +148,7 @@ align-items: center;
 .habit-list-board {
   display: flex;
   margin-top: 30px;
-  /* width: 60%; */
   flex-direction: column;
-  /* justify-content: space-around; */
   text-align: center;
 }
 .container{
@@ -188,12 +156,9 @@ align-items: center;
 }
 
 .rules-container {
-  /* border: 1px solid; */
   width: 100%;
   display: flex;
   justify-content: center;
-  /* border: 1px solid black; */
-  /* font-family: 'Panton', sans-serif; */
   font-family: Futura, "Trebuchet MS";
   border-radius: 5px;
   text-align: center;
@@ -211,10 +176,9 @@ opacity: 100%;
 
 }
 .completed-column {
-  /* border: 1px solid black; */
   height: 100%;
   display: flex;
-  /* width: 50px; */
+
   flex-direction: column;
   flex-wrap: wrap;
 }
@@ -228,7 +192,7 @@ opacity: 100%;
         width: 100%;
 
       }
-      .header {
+      .index-input-containerader {
         flex-direction: column;
       }
 
@@ -265,24 +229,12 @@ opacity: 100%;
 }
 
 
-.header { 
+.index-input-container { 
   display: flex;
-  position: relative;
   align-items: center;
-  /* right: 12em; */
-  /* width: 30vw; */
-  /* flex-direction: ; */
-  /* margin: 0px 200px 0px 200px; */
-  /* height: 100px; */
-  /* width: 100%; */
-  /* border: 1px solid black; */
+  justify-content: center;
 }
 
-.header h1 {
-  font-size: 50px;
-  /* position: relative; */
-  /* bottom: 2px; */
-}
 .button-off {
   background-color: lightgreen;
   display: relative;
@@ -311,4 +263,49 @@ opacity: 100%;
 .true {
   background-color: black;
   opacity: 1;
+}
+
+.navbar {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 50px;
+  background-color: whitesmoke;
+}
+
+.navbar div {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.button-logout {
+  padding: 5px 10px 5px 10px;
+  background-color: black;
+  color: white;
+}
+
+.button-logout:hover {
+  opacity: 60%;
+}
+
+.button-habit-board {
+  padding: 5px 10px 5px 10px;
+  background-color: darkblue;
+  color: white;
+}
+
+.button-habit-board:hover {
+  opacity: 60%;
+}
+
+.footer {
+  margin-top: 50px;
+  height: 100px;
+  background-color: whitesmoke;
+}
+
+.buttons-container {
+  max-width: 30%;
 }

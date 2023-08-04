@@ -1,23 +1,27 @@
 /* eslint-disable no-console */
-import React, { useContext } from "react";
-// import './App.css';
-import Input from "../Components/Input";
-import Habit from "../Components/Habit";
+import React, { useContext, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectTodoList } from "../features/todoSlice";
-import TodoCompleted from "../Components/TodoCompleted";
+import { selectHabitList } from "../../features/habitSlice";
+import { selectAllHabitLists } from "../../features/allHabitLists";
+import InputBar from "../../Components/InputBar/InputBar";
+import HabitListBar from "../../Components/HabitDate/HabitListBar";
+import HabitBox from "../../Components/HabitBox/HabitBox";
+import CompletedBox from "../../Components/CompletedBox/CompletedBox";
+import { daysDictionary } from "../../constants/days.dictionary";
 
 const days = [1, 2, 3, 4, 5, 6, 7];
 
-function Index() {
-  const todoList = useSelector(selectTodoList);
+function HabitBoard() {
+  const habitList = useSelector(selectHabitList);
+  const allHabitLists = useSelector(selectAllHabitLists);
+  const { list } = habitList
 
   return (
     <div className="index-page">
-      <div className="header">
-        <h1>Habit List</h1>
-        <Input />
+      <div className="index-input-container">
+        <InputBar habitListId={habitList._id}/>
       </div>
+      <HabitListBar habitLists={allHabitLists} />
       <div className="habit-list-board">
         <div className="todo-container">
           <div className="todo-list">
@@ -26,20 +30,21 @@ function Index() {
               {days.map((day) => (
                 <div className="habit-container">
                   <div className="habit-box">
-                    <p>{day}</p>
+                    <p>{daysDictionary[day]}</p>
                   </div>
                   <button className="button-off disable"></button>
                 </div>
               ))}
             </div>
-            {todoList.map((habit) => {
+            {list.map((habit) => {
               if (habit) {
                 return (
-                  <Habit
+                  <HabitBox
                     name={habit.item}
                     done={habit.done}
                     off={habit.off}
                     id={habit.id}
+                    habitListId={habitList._id}
                   />
                 );
               } else {
@@ -47,7 +52,7 @@ function Index() {
               }
             })}
             <div className="todo-days">
-              <TodoCompleted todoList={todoList} />
+              <CompletedBox list={list} />
             </div>
           </div>
         </div>
@@ -76,4 +81,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default HabitBoard;

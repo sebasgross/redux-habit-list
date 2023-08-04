@@ -1,22 +1,21 @@
 import React, {useContext, useState} from 'react';
-import '../index.css';
+// import "../../pages/index/Index.css";
 import { useDispatch } from 'react-redux';
-import { saveHabit } from '../features/todoSlice';
-import UserContext from '../app/context/UserContext';
+import { saveHabit } from '../../features/habitSlice';
 
-const Input = () => {
+const InputBar = ({habitListId}) => {
     const [input, setInput ] = useState('')
     const dispatch = useDispatch()    
-    const user = useContext(UserContext)
 
     const addHabit = () => {
         dispatch(saveHabit({
-            habitListId: user.habitList ? user.habitList : 0,
+            habitListId: habitListId ? habitListId : 0,
             item: input,
             done: [],
             off: [],
             id: Date.now()
         }))
+        window.location.reload(false);
     }
 
   return (
@@ -27,4 +26,4 @@ const Input = () => {
   )
 }
 
-export default Input
+export default InputBar

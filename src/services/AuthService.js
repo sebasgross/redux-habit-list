@@ -19,8 +19,14 @@ const signUp = (crendentials) =>
 const checkForUser = () =>
   http.get("user/private").then((response) => response);
 
+const logOut = () =>
+  http
+    .get("user/logout")
+    .then((response) => response);
+
 export default {
   logIn,
   signUp,
   checkForUser,
+  logOut,
 };

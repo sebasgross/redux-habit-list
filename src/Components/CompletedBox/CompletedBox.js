@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { } from "react";
 import { motion } from "framer-motion";
-import Tooltip from "@mui/material/Tooltip";
 
 const days = [1, 2, 3, 4, 5, 6, 7];
 
-const TodoCompleted = ({ todoList }) => {
-  // const todoList = state.list
+const CompletedBox = ({ list }) => {
 
   const checkIfFutureDay = (day) => {
     var today = new Date();
@@ -24,19 +22,19 @@ const TodoCompleted = ({ todoList }) => {
 
   const checkIfCompleted = (day) => {
     var completed = 0;
-    for (var i = 0; i < todoList.length; i++) {
-      if (todoList[i].done.includes(day) || todoList[i].off.includes(day)) {
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].done.includes(day) || list[i].off.includes(day)) {
         completed++;
       }
     }
-    if (completed === todoList.length) {
+    if (completed === list.length) {
       return true;
     } else {
       return false;
     }
   };
 
-  if (todoList.length > 0) {
+  if (list.length > 0) {
     return (
       <motion.div
         exit={{ x: -3 }}
@@ -81,4 +79,4 @@ const TodoCompleted = ({ todoList }) => {
   }
 };
 
-export default TodoCompleted;
+export default CompletedBox;

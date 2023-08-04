@@ -1,16 +1,13 @@
 /* eslint-disable no-console */
-import React, { useContext, useEffect, useState } from "react";
+import React, {} from "react";
 import { useDispatch } from "react-redux"; // this is for using the fucntoins
-import { markHabit, removeHabit, markHabitOff } from "../features/todoSlice"; //the actual function
-import "../index.css";
+import { markHabit, removeHabit, markHabitOff } from "../../features/habitSlice"; //the actual function
 import { motion } from "framer-motion";
-import UserContext from "../app/context/UserContext";
 
 const days = [1, 2, 3, 4, 5, 6, 7];
 
-const TodoItem = ({ name, done, id, off }) => {
+const HabitBox = ({ name, done, id, off, habitListId }) => {
   const dispatch = useDispatch(); //You have to activate it
-  const user = useContext(UserContext);
 
   const checkDay = (day) => {
     var today = new Date();
@@ -33,7 +30,7 @@ const TodoItem = ({ name, done, id, off }) => {
     } else {
       dispatch(
         markHabit({
-          habitListId: user.habitList,
+          habitListId: habitListId,
           id: id,
           day: day,
         })
@@ -44,7 +41,7 @@ const TodoItem = ({ name, done, id, off }) => {
   const turnHabitOff = (day) => {
     dispatch(
       markHabitOff({
-        habitListId: user.habitList,
+        habitListId: habitListId,
         id: id,
         day: day,
       })
@@ -55,7 +52,7 @@ const TodoItem = ({ name, done, id, off }) => {
     dispatch(
       removeHabit({
         id: id,
-        habitListId: user.habitList,
+        habitListId: habitListId,
       })
     ); //Removed Habit from List
   };
@@ -74,8 +71,6 @@ const TodoItem = ({ name, done, id, off }) => {
     }
   };
 
-  // const success_rate = 7 - off?.length
-
   return (
     <motion.div
       exit={{ x: -3 }}
@@ -84,7 +79,6 @@ const TodoItem = ({ name, done, id, off }) => {
       className="todo-item"
       transition={{ ease: "easeOut", duration: 0.1 }}
     >
-      {/* <span> 7 / {success_rate}</span> */}
       <p>{sliceIf(name)}</p>
       <div className="todo-item-column">
         <div className="todo-days-habits">
@@ -140,4 +134,4 @@ const TodoItem = ({ name, done, id, off }) => {
   );
 };
 
-export default TodoItem;
+export default HabitBox;
